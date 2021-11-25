@@ -167,7 +167,12 @@ export default class App extends React.Component {
   render() {
     return (
       <main className="main-content">
-        <h1 className="not-selectable">Low Budget Anotator!</h1>
+        <div className="title-wrapper">
+          <h1 className="not-selectable title">Low-Cost Annotator</h1>
+          <h3 className="not-selectable subtitle">
+            Paste your text anywhere to start!
+          </h3>
+        </div>
         <div className="side-by-side">
           <div className="text-container">
             <div className="text-content">

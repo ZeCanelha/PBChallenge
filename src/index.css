@@ -27,11 +27,26 @@ body {
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
 
-h1 {
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.title {
   line-height: 1.2;
   letter-spacing: 2px;
+  font-weight: bold;
   text-transform: uppercase;
   color: var(--contrast-color);
+}
+
+.subtitle {
+  color: rgb(18, 65, 21);
+  text-transform: uppercase;
+  font-size: 1.25rem;
 }
 
 .main-content {
@@ -39,7 +54,6 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
   width: 100vw;
   height: 75vh;
 }
@@ -53,17 +67,43 @@ h1 {
   gap: 15px;
 }
 
+@media screen and (max-width: 800px) {
+  .main-content {
+    min-height: 100vh;
+    justify-content: space-around;
+    flex: row;
+  }
+  .side-by-side {
+    flex-direction: column;
+    height: 70%;
+  }
+}
+
 .text-container {
   display: flex;
   flex-direction: column;
-  flex: 1 1 50%;
+  max-width: 60%;
+  flex: 1 1 100%;
 }
 
 .tags-container {
   display: flex;
   flex-wrap: wrap;
-  flex: 1 1 30%;
+  max-width: 40%;
+  flex: 1 1 100%;
   gap: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .text-container {
+    max-width: 100%;
+  }
+  .tags-container {
+    max-width: 100%;
+  }
+  .tag-content {
+    min-height: 20%;
+  }
 }
 
 .tag-content {
@@ -72,8 +112,8 @@ h1 {
   align-content: flex-start;
   align-items: baseline;
   flex-wrap: wrap;
-  height: 20%;
-  flex: 0 0 100%;
+  height: 22.5%;
+  width: 100%;
   overflow-y: scroll;
   border-radius: 15px;
   border: 1.5px solid #fff;
@@ -95,6 +135,16 @@ h1 {
 
 .words {
   font-size: 1rem;
+  user-select: none;
+}
+
+@media screen and (max-width: 800px) {
+  .border-text {
+    font-size: 1rem;
+  }
+  .words {
+    font-size: 0.75rem;
+  }
 }
 
 .text-content {
@@ -129,4 +179,13 @@ h1 {
 
 .tooltip-overlay > * {
   margin: 0 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .tooltip-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 25%;
+  }
 }

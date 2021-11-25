@@ -11,7 +11,7 @@ const containsObject = (obj, objList) => {
 };
 
 const DEFAULT_STATE = {
-  text: "Paste your text here to start editing....",
+  text: "",
   tags: {
     Person: [],
     Organization: [],
@@ -36,10 +36,8 @@ const getState = () => {
     // Add the defaults
     savedState.tooltip = DEFAULT_STATE.tooltip;
     savedState.currentSelection = DEFAULT_STATE.currentSelection;
-
     return savedState;
   }
-
   return DEFAULT_STATE;
 };
 
