@@ -28,6 +28,9 @@ const DEFAULT_STATE = {
     final_index: 0,
     word: "",
   },
+  notificationToast: {
+    show: false,
+  },
 };
 
 const getState = () => {
@@ -36,6 +39,7 @@ const getState = () => {
     // Add the defaults
     savedState.tooltip = DEFAULT_STATE.tooltip;
     savedState.currentSelection = DEFAULT_STATE.currentSelection;
+    savedState.notificationToast = DEFAULT_STATE.notificationToast;
     return savedState;
   }
   return DEFAULT_STATE;

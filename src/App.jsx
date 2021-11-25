@@ -3,6 +3,7 @@ import update from "immutability-helper";
 import Buttons from "./components/Buttons";
 import Tooltip from "./components/Tooltip";
 import Tags from "./components/Tags";
+import ToastNotification from "./components/Toast";
 import { containsObject, getState, DEFAULT_STATE } from "./utils/util";
 
 export default class App extends React.Component {
@@ -19,6 +20,17 @@ export default class App extends React.Component {
     this.onSetTag = this.onSetTag.bind(this);
     this.onClearText = this.onClearText.bind(this);
     this.onSaveSesstion = this.onSaveSesstion.bind(this);
+    this.onToastClose = this.onToastClose.bind(this);
+  }
+
+  onToastClose(e) {
+    this.setState(
+      update(this.state, {
+        notificationToast: {
+          show: { $set: !this.state.notificationToast.show },
+        },
+      })
+    );
   }
 
   wordMapper(tagArray) {
@@ -41,6 +53,7 @@ export default class App extends React.Component {
       tags: this.state.tags,
     };
     localStorage.setItem("state", JSON.stringify(saveSession));
+    this.onToastClose();
   }
 
   onSetTag(e) {
@@ -191,6 +204,11 @@ export default class App extends React.Component {
           setTag={this.onSetTag}
           tooltip={this.state.tooltip}
         ></Tooltip>
+
+        <ToastNotification
+          show={this.state.notificationToast.show}
+          onClose={this.onToastClose}
+        ></ToastNotification>
       </main>
     );
   }
