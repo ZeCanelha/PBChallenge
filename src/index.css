@@ -12,6 +12,7 @@
   --primary-color: hsl(0, 100%, 100%);
   --logo-color: hsl(230, 2%, 49%);
   --contrast-color: hsl(58, 77%, 53%);
+  --background-color: hsl(198, 69%, 54%);
 }
 
 body {
@@ -69,6 +70,7 @@ h1 {
   display: flex;
   flex-direction: row;
   align-content: flex-start;
+  align-items: baseline;
   flex-wrap: wrap;
   height: 20%;
   flex: 0 0 100%;
@@ -76,7 +78,6 @@ h1 {
   border-radius: 15px;
   border: 1.5px solid #fff;
   background-color: var(--primary-color);
-  position: relative;
 }
 
 .tag-content > * {
@@ -89,11 +90,11 @@ h1 {
 
 .border-text {
   font-size: 1.2rem;
-  color: var(--contrast-color);
-  position: absolute;
-  transform: translateX(15%) translateY(-60%);
-  background-color: hsl(198, 69%, 54%);
-  background-color: white;
+  color: var(--background-color);
+}
+
+.words {
+  font-size: 1rem;
 }
 
 .text-content {

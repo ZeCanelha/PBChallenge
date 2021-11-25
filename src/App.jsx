@@ -3,13 +3,12 @@ import update from "immutability-helper";
 import Buttons from "./components/Buttons";
 import Tooltip from "./components/Tooltip";
 import Tags from "./components/Tags";
-import { containsObject } from "./utils/util";
-import { DEFAULT_STATE } from "./utils/util";
+import { containsObject, getState, DEFAULT_STATE } from "./utils/util";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = DEFAULT_STATE;
+    this.state = getState();
     // Create a reference to the tooltip
     this.tooltipRef = React.createRef();
 
@@ -23,8 +22,12 @@ export default class App extends React.Component {
   }
 
   wordMapper(tagArray) {
-    return tagArray.map((item) => {
-      return <span>{item.word}</span>;
+    return tagArray.map((item, index) => {
+      return (
+        <span className="words" key={index}>
+          {item.word + " (" + item.start + ", " + item.end + ")"}
+        </span>
+      );
     });
   }
 
@@ -32,7 +35,13 @@ export default class App extends React.Component {
     e.preventDefault();
     this.setState(update(this.state, { $set: DEFAULT_STATE }));
   }
-  onSaveSesstion(e) {}
+  onSaveSesstion(e) {
+    const saveSession = {
+      text: this.state.text,
+      tags: this.state.tags,
+    };
+    localStorage.setItem("state", JSON.stringify(saveSession));
+  }
 
   onSetTag(e) {
     // Get tag and persist the temporary selection to the state
@@ -167,7 +176,10 @@ export default class App extends React.Component {
           </div>
           <Tags tags={this.state.tags} mapper={this.wordMapper}></Tags>
         </div>
-        <Buttons onClearText={this.onClearText}></Buttons>
+        <Buttons
+          onSaveSession={this.onSaveSesstion}
+          onClearText={this.onClearText}
+        ></Buttons>
 
         <Tooltip
           tooltipRef={this.tooltipRef}

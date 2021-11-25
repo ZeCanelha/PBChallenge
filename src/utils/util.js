@@ -30,7 +30,21 @@ const DEFAULT_STATE = {
   },
 };
 
+const getState = () => {
+  if (localStorage.getItem("state")) {
+    const savedState = JSON.parse(localStorage.getItem("state"));
+    // Add the defaults
+    savedState.tooltip = DEFAULT_STATE.tooltip;
+    savedState.currentSelection = DEFAULT_STATE.currentSelection;
+
+    return savedState;
+  }
+
+  return DEFAULT_STATE;
+};
+
 module.exports = {
-  DEFAULT_STATE,
+  getState,
   containsObject,
+  DEFAULT_STATE,
 };

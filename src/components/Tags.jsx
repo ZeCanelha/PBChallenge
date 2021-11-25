@@ -5,19 +5,19 @@ const Tags = (props) => {
   return (
     <div className="tags-container">
       <div className="tag-content">
-        <span className="border-text not-selectable">Person</span>
+        <h3 className="border-text not-selectable">Person tags:</h3>
         {mapper(tags.Person)}
       </div>
       <div className="tag-content">
-        <h3 className="border-text not-selectable">Place</h3>
+        <h3 className="border-text not-selectable">Place tags:</h3>
         {mapper(tags.Place)}
       </div>
       <div className="tag-content">
-        <span className="border-text not-selectable">Organization</span>
+        <h3 className="border-text not-selectable">Organization tags:</h3>
         {mapper(tags.Organization)}
       </div>
       <div className="tag-content not-selectable">
-        <span className="border-text">Event</span>
+        <h3 className="border-text">Event tags:</h3>
         {mapper(tags.Event)}
       </div>
     </div>
