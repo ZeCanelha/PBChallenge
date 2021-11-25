@@ -1,3 +1,22 @@
+// import axios from "axios";
+
+// Regarding the first remark: ideally store the data in a server
+
+/* const postData = async (state) => {
+//   try {
+//     const response = await axios.post(
+//       "dummyapi.com/store",
+//       JSON.stringify(state)
+//     );
+//     console.log(response.data);
+//     // Do something with the response
+//   } catch (error) {
+//     // Do something with the error
+//     console.log(error);
+//   }
+// };
+*/
+
 const containsObject = (obj, objList) => {
   for (const key in objList) {
     if (
